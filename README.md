@@ -20,15 +20,15 @@ In this lab, you will design, model in Verilog HDL, and verify a **4-bit by 4-bi
 
 ## 📁 2. Repository Contents & Architecture
 
-| File | Type | Description | Student Action |
+| File | Type | Description | Evaluation Scope |
 | :--- | :--- | :--- | :--- |
-| [`LAB_1.pdf`](LAB_1.pdf) | Reference | Full lab manual, architectural block diagram, and state transition specifications | **Read thoroughly** |
-| [`controller.v`](controller.v) | Verilog RTL | Finite State Machine (FSM) control unit | **✏️ Implement here** |
-| [`datapath.v`](datapath.v) | Verilog RTL | 4-bit accumulator, decrementer, and loop-counter datapath | **Do not modify** |
-| [`top.v`](top.v) | Verilog RTL | Top-level structural wrapper interconnecting Datapath and Controller | **Do not modify** |
-| [`tb_top.v`](tb_top.v) | Testbench | Verification suite covering edge cases ($0 \times 0$, $15 \times 15$, etc.) & cycle counting | **Run to verify** |
-| [`wave.do`](wave.do) | Script | Waveform configuration for QuestaSim / ModelSim | Used for waveform capture |
-| [`Makefile`](Makefile) | Automation | Compilation, simulation, and cleanup commands | Optional CLI convenience |
+| [`controller.v`](controller.v) | Verilog RTL | Finite State Machine (FSM) control unit | **Mandatory Submission** (Scanned for AI & Plagiarism) |
+| [`datapath.v`](datapath.v) | Verilog RTL | 4-bit accumulator, decrementer, and loop-counter datapath | **Mandatory Submission** (Scanned for AI & Plagiarism) |
+| [`top.v`](top.v) | Verilog RTL | Top-level structural wrapper interconnecting Datapath and Controller | **Mandatory Submission** (Scanned for AI & Plagiarism) |
+| [`tb_top.v`](tb_top.v) | Testbench | Verification suite covering edge cases & cycle counting | **Mandatory Submission** (Scanned for AI & Plagiarism) |
+| [`LAB_1.pdf`](LAB_1.pdf) | Reference | Full lab manual, architectural block diagram, and state transition specifications | Reference Documentation |
+| [`wave.do`](wave.do) | Script | Waveform configuration for QuestaSim / ModelSim | Waveform setup script |
+| [`Makefile`](Makefile) | Automation | Compilation, simulation, and cleanup commands | Build helper |
 
 ---
 
@@ -115,16 +115,22 @@ Follow these exact steps to complete and submit your lab:
 2. Complete the state parameters, sequential state registers, and combinational next-state/output logic.
 3. Test your implementation against [`tb_top.v`](tb_top.v). Ensure 0 latch warnings in simulation.
 
-### Step 3: Add Required Deliverables
-In addition to your Verilog code, save your waveform captures and simulator transcript in your repository:
-- `controller.v` *(Your completed FSM code)*
-- Waveform screenshots showing execution for key test vectors (e.g. `1.png`, `2.png`, etc.)
-- `questa_transcript.txt` *(Full console simulation log confirming test passes)*
+### Step 3: Required Deliverables
+You must submit **all four Verilog files**, along with simulation transcripts and waveform screenshots:
+- `controller.v` *(FSM control logic)*
+- `datapath.v` *(Accumulator and counter datapath)*
+- `top.v` *(Structural top-level)*
+- `tb_top.v` *(Self-checking testbench)*
+- `questa_transcript.txt` *(Console simulation transcript confirming all tests pass)*
+- Waveform screenshots showing test execution (e.g. `1.png`, `2.png`, etc.)
+
+> ⚠️ **Important:** If you make optimizations or adjustments in `datapath.v`, `top.v`, or `tb_top.v` (e.g., adding assertions or probes), they will also be evaluated. **All four files will be scanned together for structural duplication, cross-student collusion, and AI code generation.**
 
 ### Step 4: Commit & Push Your Work
+Stage all Verilog source files and deliverables:
 ```bash
-git add controller.v questa_transcript.txt *.png
-git commit -m "Submit Lab 1: Sequential Multiplier Controller implementation"
+git add controller.v datapath.v top.v tb_top.v questa_transcript.txt *.png
+git commit -m "Submit Lab 1: All Verilog RTL, testbench, and simulation deliverables"
 git push origin main
 ```
 
@@ -140,6 +146,6 @@ Submissions will be automatically evaluated using the course automated test harn
 4. **Deliverables & Transcripts (20%):** Valid simulation transcripts and clear waveform verification captures.
 
 ### 🛡️ Automated Academic Integrity & Viva Verification:
-- All submissions are analyzed by the **DFT AST & Structural Plagiarism Engine**.
-- Submissions undergo automated **AI Code Generation Auditing**.
-- During lab viva sessions, students will be asked **3 targeted architecture and state-transition defense questions** based on their specific code implementation. You must be able to explain your choice of state transitions, flag handling, and signal timings.
+- **Full-Suite Structural Plagiarism Audit:** All four Verilog files (`controller.v`, `datapath.v`, `top.v`, and `tb_top.v`) are tokenized at the Abstract Syntax Tree (AST) level. The engine detects identifier renaming, block rearrangement, and whitespace obfuscation across all submissions.
+- **Multi-File AI Code Generation Detection:** Each file is evaluated for automated LLM signatures, unnatural comment density, non-idiomatic named procedural blocks, and spec hallucinations.
+- **Oral Defense / Viva Examination:** Each student will be asked **3 targeted architecture and state-transition defense questions** based directly on their submitted Verilog implementations. You must be able to justify every line of code submitted under your name.
