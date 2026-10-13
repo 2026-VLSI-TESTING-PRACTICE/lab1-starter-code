@@ -1,9 +1,12 @@
-# Makefile for Sequential Multiplier (EC23I2015)
+# Makefile for Sequential Multiplier (EC5034 - Lab 1)
 
+# Simulator executables
 VLIB = vlib
 VMAP = vmap
 VLOG = vlog
 VSIM = vsim
+IVERILOG = iverilog
+VVP = vvp
 
 RTL_SRCS = datapath.v controller.v top.v
 TB_SRC   = tb_top.v
@@ -11,6 +14,7 @@ TOP_TB   = tb_top
 
 all: compile sim
 
+# --- QuestaSim / ModelSim targets ---
 lib:
 	$(VLIB) work
 	$(VMAP) work work
@@ -24,7 +28,13 @@ sim: compile
 gui: compile
 	$(VSIM) -gui -do wave.do $(TOP_TB) &
 
-clean:
-	rm -rf work transcript vsim.wlf *.log
+# --- Open-source Icarus Verilog targets ---
+sim-icarus:
+	$(IVERILOG) -g2001 -o sim.out $(RTL_SRCS) $(TB_SRC)
+	$(VVP) sim.out
+	rm -f sim.out
 
-.PHONY: all lib compile sim gui clean
+clean:
+	rm -rf work transcript vsim.wlf *.log sim.out
+
+.PHONY: all lib compile sim gui sim-icarus clean
