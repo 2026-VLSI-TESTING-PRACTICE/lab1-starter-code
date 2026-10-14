@@ -116,21 +116,22 @@ Follow these exact steps to complete and submit your lab:
 3. Test your implementation against [`tb_top.v`](tb_top.v). Ensure 0 latch warnings in simulation.
 
 ### Step 3: Required Deliverables
-You must submit **all four Verilog files**, along with simulation transcripts and waveform screenshots:
-- `controller.v` *(FSM control logic)*
+You must submit the following files directly in your repository:
+- `controller.v` *(Your completed FSM control logic)*
 - `datapath.v` *(Accumulator and counter datapath)*
 - `top.v` *(Structural top-level)*
 - `tb_top.v` *(Self-checking testbench)*
-- `questa_transcript.txt` *(Console simulation transcript confirming all tests pass)*
-- Waveform screenshots showing test execution (e.g. `1.png`, `2.png`, etc.)
+- `Makefile` *(QuestaSim build and simulation targets)*
+- `questa_transcript.txt` *(Console simulation transcript proving all 10 tests pass)*
+- `report.pdf` *(Your lab report containing waveform screenshots, state diagram, and analysis)*
 
-> ⚠️ **Important:** If you make optimizations or adjustments in `datapath.v`, `top.v`, or `tb_top.v` (e.g., adding assertions or probes), they will also be evaluated. **All four files will be scanned together for structural duplication, cross-student collusion, and AI code generation.**
+> ⚠️ **Important:** All four Verilog files will be audited for syntax and structural duplication across submissions. Your `report.pdf` will also be analyzed for peer-to-peer duplication.
 
 ### Step 4: Commit & Push Your Work
-Stage all Verilog source files and deliverables:
+Stage all deliverables and push:
 ```bash
-git add controller.v datapath.v top.v tb_top.v questa_transcript.txt *.png
-git commit -m "Submit Lab 1: All Verilog RTL, testbench, and simulation deliverables"
+git add controller.v datapath.v top.v tb_top.v Makefile questa_transcript.txt report.pdf
+git commit -m "Submit Lab 1: RTL, testbench, QuestaSim transcript and report"
 git push origin main
 ```
 
