@@ -115,23 +115,23 @@ Follow these exact steps to complete and submit your lab:
 2. Complete the state parameters, sequential state registers, and combinational next-state/output logic.
 3. Test your implementation against [`tb_top.v`](tb_top.v). Ensure 0 latch warnings in simulation.
 
-### Step 3: Required Deliverables
-You must submit the following files directly in your repository:
-- `controller.v` *(Your completed FSM control logic)*
-- `datapath.v` *(Accumulator and counter datapath)*
-- `top.v` *(Structural top-level)*
-- `tb_top.v` *(Self-checking testbench)*
-- `Makefile` *(QuestaSim build and simulation targets)*
-- `questa_transcript.txt` *(Console simulation transcript proving all 10 tests pass)*
-- `report.pdf` *(Your lab report containing waveform screenshots, state diagram, and analysis)*
+### Step 3: Required Deliverables & Strict File Naming
+Your repository must contain **strictly and exactly** the following 7 files (exact case and spelling):
+1. `controller.v` — Your completed FSM control unit
+2. `datapath.v` — Accumulator, decrementer, and loop-counter datapath
+3. `top.v` — Top-level structural module
+4. `tb_top.v` — Testbench module
+5. `Makefile` — Build automation file
+6. `questa_transcript.txt` — QuestaSim console simulation transcript log
+7. `LAB_1.pdf` — Your lab report (containing waveforms, state diagrams, and cycle analysis)
 
-> ⚠️ **Important:** All four Verilog files will be audited for syntax and structural duplication across submissions. Your `report.pdf` will also be analyzed for peer-to-peer duplication.
+> ⚠️ **Strict Filename Enforcement:** The grading and integrity pipeline expects these exact filenames. Any variation (e.g. `lab1.pdf`, `report.pdf`, `Controller.V`) will be flagged as a missing deliverable by the automated grader.
 
 ### Step 4: Commit & Push Your Work
-Stage all deliverables and push:
+Stage all 7 deliverables and push:
 ```bash
-git add controller.v datapath.v top.v tb_top.v Makefile questa_transcript.txt report.pdf
-git commit -m "Submit Lab 1: RTL, testbench, QuestaSim transcript and report"
+git add controller.v datapath.v top.v tb_top.v Makefile questa_transcript.txt LAB_1.pdf
+git commit -m "Submit Lab 1: RTL, testbench, QuestaSim transcript and LAB_1.pdf report"
 git push origin main
 ```
 
